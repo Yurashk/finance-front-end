@@ -1,0 +1,16 @@
+.button-container{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.card{
+  cursor: pointer;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+.card:hover{
+  transform: scale(1.01);
+}
+.card:active{
+  transform: scale(1.02);
+}

@@ -1,0 +1,45 @@
+<!--<div>go go go </div>-->
+<div [class.example-is-mobile]="mobileQuery.matches" class="example-container">
+  <mat-toolbar class="example-toolbar d-flex justify-content-between align-items-center">
+    <button (click)="snav.toggle()" mat-icon-button size="large">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="assets/img/Gold_coin_icon.png" width="50px">
+  </mat-toolbar>
+  <mat-sidenav-container [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+                         class="example-sidenav-container">
+    <mat-sidenav #snav [fixedInViewport]="mobileQuery.matches"
+                 [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 class="sidenav-menu" fixedTopGap="56">
+      <mat-nav-list>
+        <a (click)="snav.close()"
+           [routerLinkActive]="'is-active'"
+           [routerLink]="['./all-borders']"
+           class="d-flex mat-list-link" mat-list-item routerLink="add-history-pdf">
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="mr-2"
+                    style="margin-right: 10px!important;">manage_accounts
+          </mat-icon>
+
+          <span class="ml-2">
+           Список дошок
+          </span>
+        </a>
+        <a (click)="logout()"
+           [routerLinkActive]="'is-active'"
+           class="d-flex mat-list-link " mat-list-item>
+          <mat-icon aria-hidden="false" aria-label="Example home icon" class="mr-2"
+                    style="margin-right: 10px!important;">exit_to_app
+          </mat-icon>
+          <span class="ml-2">
+            Вихід
+          </span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<!--<router-outlet></router-outlet>&ndash;&gt;-->

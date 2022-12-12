@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <mat-spinner *ngIf="!boarderDidLoaded"></mat-spinner>
+  </div>
+  <ng-container *ngIf="boarderDidLoaded">
+    <div class="row my-3">
+      <div class="col-md-6 d-flex justify-content-md-start align-items-center">
+        <h2 class="">{{border.name}}
+        </h2>
+      </div>
+      <div class="col-md-6 d-flex flex-column justify-content-center align-items-md-end">
+        <h2 class="flex-wrap text-md-right m-0 ">Ціль : <span class="text-success">{{border.goal}}</span></h2>
+        <h5 class="flex-wrap text-md-right ">Витрачено : <span class="text-danger">{{currentSpentMoney}}</span></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-1">
+        <app-spend-money (newMoneySpend)=" spendValue($event)"></app-spend-money>
+      </div>
+      <div class="col-md-6 ">
+        <app-add-new-member [border]="border" *ngIf="border.ownerEmail == currentUserEmail"></app-add-new-member>
+        <div class="card" *ngIf="border.ownerEmail !== currentUserEmail">
+          <div class="card-body">
+            Дошка належить {{border.ownerEmail}}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <app-spended-money-list [spentMoney]="border.spendMoney"></app-spended-money-list>
+      </div>
+    </div>
+  </ng-container>
+</div>
+

@@ -1,0 +1,24 @@
+<div class="card shadow">
+  <div class="card-header">
+    <h4 class="m-0">Витрати на: </h4>
+  </div>
+  <form [formGroup]="myForm" class="w-100">
+    <div class="card-body d-flex flex-column">
+      <mat-chip-list>
+        <mat-chip *ngFor="let item of forWhat" style="cursor:pointer" color="primary"
+                  class="text-light"
+                  [selected]="myForm.controls['forWhat'].value==item"
+                  (click)="myForm.controls['forWhat'].patchValue(item)">{{item}}</mat-chip>
+      </mat-chip-list>
+      <mat-form-field appearance="outline" class="mt-3">
+        <mat-label>Скільки</mat-label>
+        <input type="number" autocomplete="off" formControlName="price" matInput placeholder="1000">
+        <mat-icon matSuffix>payments</mat-icon>
+        <mat-hint>Сума</mat-hint>
+      </mat-form-field>
+      <div class="d-flex justify-content-center">
+        <button (click)="spendMoney()" mat-raised-button class="mt-2" color="primary" [disabled]="myForm.invalid">Підтвердити</button>
+      </div>
+    </div>
+  </form>
+</div>
